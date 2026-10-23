@@ -1,0 +1,169 @@
+{
+  "proyecto": "ActivityLeo",
+  "base_datos": "postgres",
+  "consultas": [
+    {
+      "nombre": "interes_de_vecinos_por_categoria_y_frecuencia",
+      "por_que_es_importante": "Cruza Vecinos, Preferencias_Vecinos y Categorias_Interes. Indica qué actividades quieren los vecinos y con qué frecuencia, para planificar talleres abiertos al barrio con un calendario realista.",
+      "sql": "SELECT c.nombre_categoria, pv.frecuencia_deseada, COUNT(DISTINCT v.id_vecino) AS vecinos_interesados FROM Preferencias_Vecinos pv JOIN Vecinos v ON v.id_vecino = pv.id_vecino JOIN Categorias_Interes c ON c.id_categoria = pv.id_categoria GROUP BY c.nombre_categoria, pv.frecuencia_deseada ORDER BY vecinos_interesados DESC LIMIT 15",
+      "total_filas": 15,
+      "resultados": [
+        {
+          "nombre_categoria": "Ajedrez",
+          "frecuencia_deseada": "Mensual",
+          "vecinos_interesados": 19
+        },
+        {
+          "nombre_categoria": "Tecnología",
+          "frecuencia_deseada": "Mensual",
+          "vecinos_interesados": 18
+        },
+        {
+          "nombre_categoria": "Podcasts",
+          "frecuencia_deseada": "Semanal",
+          "vecinos_interesados": 18
+        },
+        {
+          "nombre_categoria": "Música",
+          "frecuencia_deseada": "Mensual",
+          "vecinos_interesados": 16
+        },
+        {
+          "nombre_categoria": "Deportes",
+          "frecuencia_deseada": "Quincenal",
+          "vecinos_interesados": 15
+        },
+        {
+          "nombre_categoria": "Idiomas",
+          "frecuencia_deseada": "Mensual",
+          "vecinos_interesados": 14
+        },
+        {
+          "nombre_categoria": "Deportes",
+          "frecuencia_deseada": "Semanal",
+          "vecinos_interesados": 13
+        },
+        {
+          "nombre_categoria": "Música",
+          "frecuencia_deseada": "Quincenal",
+          "vecinos_interesados": 13
+        },
+        {
+          "nombre_categoria": "Cocina",
+          "frecuencia_deseada": "Quincenal",
+          "vecinos_interesados": 13
+        },
+        {
+          "nombre_categoria": "Videojuegos",
+          "frecuencia_deseada": "Semanal",
+          "vecinos_interesados": 13
+        },
+        {
+          "nombre_categoria": "Videojuegos",
+          "frecuencia_deseada": "Quincenal",
+          "vecinos_interesados": 13
+        },
+        {
+          "nombre_categoria": "Videojuegos",
+          "frecuencia_deseada": "Mensual",
+          "vecinos_interesados": 12
+        },
+        {
+          "nombre_categoria": "Arte y dibujo",
+          "frecuencia_deseada": "Semanal",
+          "vecinos_interesados": 12
+        },
+        {
+          "nombre_categoria": "Teatro",
+          "frecuencia_deseada": "Semanal",
+          "vecinos_interesados": 12
+        },
+        {
+          "nombre_categoria": "Teatro",
+          "frecuencia_deseada": "Mensual",
+          "vecinos_interesados": 12
+        }
+      ]
+    },
+    {
+      "nombre": "tendencias_en_redes_por_categoria",
+      "por_que_es_importante": "Cruza Tendencias_Redes y Categorias_Interes. Detecta qué temas están de moda en las redes y cuáles son sus palabras clave más buscadas, para anticiparse a lo que pedirán alumnos y vecinos.",
+      "sql": "SELECT c.nombre_categoria, SUM(t.volumen_busquedas) AS busquedas_totales, MAX(t.volumen_busquedas) AS maximo_una_palabra, COUNT(t.id_tendencia) AS palabras_clave FROM Tendencias_Redes t JOIN Categorias_Interes c ON c.id_categoria = t.id_categoria GROUP BY c.nombre_categoria ORDER BY busquedas_totales DESC",
+      "total_filas": 12,
+      "resultados": [
+        {
+          "nombre_categoria": "Fotografía",
+          "busquedas_totales": 507567,
+          "maximo_una_palabra": 47911,
+          "palabras_clave": 16
+        },
+        {
+          "nombre_categoria": "Música",
+          "busquedas_totales": 457508,
+          "maximo_una_palabra": 48365,
+          "palabras_clave": 16
+        },
+        {
+          "nombre_categoria": "Ajedrez",
+          "busquedas_totales": 445254,
+          "maximo_una_palabra": 48404,
+          "palabras_clave": 16
+        },
+        {
+          "nombre_categoria": "Cocina",
+          "busquedas_totales": 408432,
+          "maximo_una_palabra": 42842,
+          "palabras_clave": 13
+        },
+        {
+          "nombre_categoria": "Deportes",
+          "busquedas_totales": 406434,
+          "maximo_una_palabra": 46282,
+          "palabras_clave": 14
+        },
+        {
+          "nombre_categoria": "Tecnología",
+          "busquedas_totales": 362239,
+          "maximo_una_palabra": 48584,
+          "palabras_clave": 14
+        },
+        {
+          "nombre_categoria": "Videojuegos",
+          "busquedas_totales": 341314,
+          "maximo_una_palabra": 45969,
+          "palabras_clave": 11
+        },
+        {
+          "nombre_categoria": "Cine",
+          "busquedas_totales": 301842,
+          "maximo_una_palabra": 48956,
+          "palabras_clave": 9
+        },
+        {
+          "nombre_categoria": "Idiomas",
+          "busquedas_totales": 270398,
+          "maximo_una_palabra": 46002,
+          "palabras_clave": 13
+        },
+        {
+          "nombre_categoria": "Teatro",
+          "busquedas_totales": 247244,
+          "maximo_una_palabra": 40233,
+          "palabras_clave": 12
+        },
+        {
+          "nombre_categoria": "Podcasts",
+          "busquedas_totales": 131399,
+          "maximo_una_palabra": 41104,
+          "palabras_clave": 9
+        },
+        {
+          "nombre_categoria": "Arte y dibujo",
+          "busquedas_totales": 112781,
+          "maximo_una_palabra": 37893,
+          "palabras_clave": 7
+        }
+      ]
+    }
+  ]
+}

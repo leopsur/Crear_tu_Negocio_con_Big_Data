@@ -1,0 +1,152 @@
+{
+  "proyecto": "ActivityLeo",
+  "base_datos": "mysql",
+  "consultas": [
+    {
+      "nombre": "ranking_categorias_por_interes_de_alumnos",
+      "por_que_es_importante": "Cruza Alumnos, Preferencias_Alumnos y Categorias_Interes. Dice qué temas gustan más a los alumnos y cuántos alumnos los eligen, así el instituto sabe en qué talleres invertir.",
+      "sql": "SELECT c.nombre_categoria, COUNT(DISTINCT a.id_alumno) AS alumnos_interesados, ROUND(AVG(pa.nivel_interes), 2) AS interes_medio FROM Preferencias_Alumnos pa JOIN Alumnos a ON a.id_alumno = pa.id_alumno JOIN Categorias_Interes c ON c.id_categoria = pa.id_categoria GROUP BY c.nombre_categoria ORDER BY interes_medio DESC, alumnos_interesados DESC",
+      "total_filas": 12,
+      "resultados": [
+        {
+          "nombre_categoria": "Fotografía",
+          "alumnos_interesados": 74,
+          "interes_medio": 3.26
+        },
+        {
+          "nombre_categoria": "Idiomas",
+          "alumnos_interesados": 75,
+          "interes_medio": 3.13
+        },
+        {
+          "nombre_categoria": "Podcasts",
+          "alumnos_interesados": 80,
+          "interes_medio": 3.11
+        },
+        {
+          "nombre_categoria": "Música",
+          "alumnos_interesados": 90,
+          "interes_medio": 3.08
+        },
+        {
+          "nombre_categoria": "Cine",
+          "alumnos_interesados": 80,
+          "interes_medio": 3.05
+        },
+        {
+          "nombre_categoria": "Tecnología",
+          "alumnos_interesados": 74,
+          "interes_medio": 3.04
+        },
+        {
+          "nombre_categoria": "Cocina",
+          "alumnos_interesados": 68,
+          "interes_medio": 3.04
+        },
+        {
+          "nombre_categoria": "Videojuegos",
+          "alumnos_interesados": 79,
+          "interes_medio": 2.97
+        },
+        {
+          "nombre_categoria": "Arte y dibujo",
+          "alumnos_interesados": 72,
+          "interes_medio": 2.89
+        },
+        {
+          "nombre_categoria": "Ajedrez",
+          "alumnos_interesados": 81,
+          "interes_medio": 2.86
+        },
+        {
+          "nombre_categoria": "Deportes",
+          "alumnos_interesados": 67,
+          "interes_medio": 2.84
+        },
+        {
+          "nombre_categoria": "Teatro",
+          "alumnos_interesados": 76,
+          "interes_medio": 2.79
+        }
+      ]
+    },
+    {
+      "nombre": "propuestas_mas_votadas_por_alumnos_y_vecinos",
+      "por_que_es_importante": "Cruza Propuestas_actividades, Categorias_Interes y Votaciones. Muestra qué propuestas tienen más apoyo y cuántos votos vienen de alumnos y de vecinos, para elegir las actividades que de verdad quiere la comunidad.",
+      "sql": "SELECT p.titulo_propuesta, c.nombre_categoria, COUNT(v.id_voto) AS votos_totales, SUM(CASE WHEN v.id_alumno IS NOT NULL THEN 1 ELSE 0 END) AS votos_alumnos, SUM(CASE WHEN v.id_vecino IS NOT NULL THEN 1 ELSE 0 END) AS votos_vecinos FROM Propuestas_actividades p JOIN Categorias_Interes c ON c.id_categoria = p.id_categoria JOIN Votaciones v ON v.id_propuesta = p.id_propuesta GROUP BY p.id_propuesta, p.titulo_propuesta, c.nombre_categoria ORDER BY votos_totales DESC LIMIT 10",
+      "total_filas": 10,
+      "resultados": [
+        {
+          "titulo_propuesta": "Charla de Ajedrez - Digitized even-keeled array",
+          "nombre_categoria": "Ajedrez",
+          "votos_totales": 43,
+          "votos_alumnos": 32.0,
+          "votos_vecinos": 11.0
+        },
+        {
+          "titulo_propuesta": "Club de Podcasts - Enterprise-wide grid-enabled Graphic Interface",
+          "nombre_categoria": "Podcasts",
+          "votos_totales": 42,
+          "votos_alumnos": 30.0,
+          "votos_vecinos": 12.0
+        },
+        {
+          "titulo_propuesta": "Taller de Deportes - Streamlined neutral website",
+          "nombre_categoria": "Deportes",
+          "votos_totales": 40,
+          "votos_alumnos": 24.0,
+          "votos_vecinos": 16.0
+        },
+        {
+          "titulo_propuesta": "Club de Música - Object-based next generation system engine",
+          "nombre_categoria": "Música",
+          "votos_totales": 40,
+          "votos_alumnos": 30.0,
+          "votos_vecinos": 10.0
+        },
+        {
+          "titulo_propuesta": "Torneo de Música - Mandatory tertiary product",
+          "nombre_categoria": "Música",
+          "votos_totales": 38,
+          "votos_alumnos": 31.0,
+          "votos_vecinos": 7.0
+        },
+        {
+          "titulo_propuesta": "Torneo de Ajedrez - Sharable 24/7 secured line",
+          "nombre_categoria": "Ajedrez",
+          "votos_totales": 38,
+          "votos_alumnos": 25.0,
+          "votos_vecinos": 13.0
+        },
+        {
+          "titulo_propuesta": "Torneo de Podcasts - Progressive 5thgeneration instruction set",
+          "nombre_categoria": "Podcasts",
+          "votos_totales": 37,
+          "votos_alumnos": 24.0,
+          "votos_vecinos": 13.0
+        },
+        {
+          "titulo_propuesta": "Taller de Música - Digitized bottom-line implementation",
+          "nombre_categoria": "Música",
+          "votos_totales": 36,
+          "votos_alumnos": 26.0,
+          "votos_vecinos": 10.0
+        },
+        {
+          "titulo_propuesta": "Club de Tecnología - Configurable object-oriented budgetary management",
+          "nombre_categoria": "Tecnología",
+          "votos_totales": 35,
+          "votos_alumnos": 29.0,
+          "votos_vecinos": 6.0
+        },
+        {
+          "titulo_propuesta": "Taller de Arte y dibujo - Fundamental grid-enabled adapter",
+          "nombre_categoria": "Arte y dibujo",
+          "votos_totales": 33,
+          "votos_alumnos": 23.0,
+          "votos_vecinos": 10.0
+        }
+      ]
+    }
+  ]
+}

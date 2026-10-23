@@ -1,0 +1,202 @@
+{
+  "proyecto": "ActivityLeo",
+  "base_datos": "mariadb",
+  "consultas": [
+    {
+      "nombre": "actividades_finales_con_espacio_y_apoyo",
+      "por_que_es_importante": "Cruza Actividades_finales, Propuestas_actividades, Espacios_disponibles y Votaciones. Comprueba si el espacio elegido tiene aforo suficiente para el apoyo que recibió cada actividad, y evita elegir salas demasiado pequeñas.",
+      "sql": "SELECT af.id_actividad, p.titulo_propuesta, e.nombre_espacio, e.capacidad_maxima, af.horario_fijo, COUNT(v.id_voto) AS votos_recibidos FROM Actividades_finales af JOIN Propuestas_actividades p ON p.id_propuesta = af.id_propuesta JOIN Espacios_disponibles e ON e.id_espacio = af.id_espacio LEFT JOIN Votaciones v ON v.id_propuesta = p.id_propuesta GROUP BY af.id_actividad, p.titulo_propuesta, e.nombre_espacio, e.capacidad_maxima, af.horario_fijo ORDER BY votos_recibidos DESC",
+      "total_filas": 15,
+      "resultados": [
+        {
+          "id_actividad": 4,
+          "titulo_propuesta": "Taller de Videojuegos - Digitized dynamic application",
+          "nombre_espacio": "Sala enero 3",
+          "capacidad_maxima": 109,
+          "horario_fijo": "2026-12-29T10:56:40",
+          "votos_recibidos": 39
+        },
+        {
+          "id_actividad": 12,
+          "titulo_propuesta": "Club de Podcasts - Automated methodical open architecture",
+          "nombre_espacio": "Salón manuel 1",
+          "capacidad_maxima": 15,
+          "horario_fijo": "2027-01-15T08:55:06",
+          "votos_recibidos": 36
+        },
+        {
+          "id_actividad": 10,
+          "titulo_propuesta": "Charla de Fotografía - Organic content-based portal",
+          "nombre_espacio": "Salón ellos 7",
+          "capacidad_maxima": 110,
+          "horario_fijo": "2026-11-14T00:09:11",
+          "votos_recibidos": 32
+        },
+        {
+          "id_actividad": 6,
+          "titulo_propuesta": "Charla de Teatro - Universal well-modulated extranet",
+          "nombre_espacio": "Sala enero 3",
+          "capacidad_maxima": 109,
+          "horario_fijo": "2026-12-08T04:36:01",
+          "votos_recibidos": 32
+        },
+        {
+          "id_actividad": 9,
+          "titulo_propuesta": "Club de Podcasts - Multi-tiered well-modulated synergy",
+          "nombre_espacio": "Aula comercio 5",
+          "capacidad_maxima": 150,
+          "horario_fijo": "2026-12-09T20:07:20",
+          "votos_recibidos": 29
+        },
+        {
+          "id_actividad": 2,
+          "titulo_propuesta": "Charla de Teatro - Operative system-worthy monitoring",
+          "nombre_espacio": "Aula estructura 2",
+          "capacidad_maxima": 66,
+          "horario_fijo": "2026-12-18T13:15:14",
+          "votos_recibidos": 29
+        },
+        {
+          "id_actividad": 14,
+          "titulo_propuesta": "Charla de Deportes - Streamlined modular superstructure",
+          "nombre_espacio": "Patio zonas 4",
+          "capacidad_maxima": 104,
+          "horario_fijo": "2027-02-02T04:29:42",
+          "votos_recibidos": 29
+        },
+        {
+          "id_actividad": 8,
+          "titulo_propuesta": "Concierto de Podcasts - Configurable cohesive hub",
+          "nombre_espacio": "Sala enero 3",
+          "capacidad_maxima": 109,
+          "horario_fijo": "2027-02-02T02:34:02",
+          "votos_recibidos": 29
+        },
+        {
+          "id_actividad": 13,
+          "titulo_propuesta": "Taller de Ajedrez - Intuitive mission-critical policy",
+          "nombre_espacio": "Salón ellos 7",
+          "capacidad_maxima": 110,
+          "horario_fijo": "2026-12-27T21:22:03",
+          "votos_recibidos": 28
+        },
+        {
+          "id_actividad": 5,
+          "titulo_propuesta": "Torneo de Cine - Monitored explicit adapter",
+          "nombre_espacio": "Salón ellos 7",
+          "capacidad_maxima": 110,
+          "horario_fijo": "2026-12-19T16:50:38",
+          "votos_recibidos": 28
+        },
+        {
+          "id_actividad": 7,
+          "titulo_propuesta": "Charla de Tecnología - Integrated neutral open architecture",
+          "nombre_espacio": "Salón estaba 6",
+          "capacidad_maxima": 26,
+          "horario_fijo": "2027-02-10T08:41:24",
+          "votos_recibidos": 27
+        },
+        {
+          "id_actividad": 15,
+          "titulo_propuesta": "Concierto de Deportes - Stand-alone uniform encoding",
+          "nombre_espacio": "Aula comercio 5",
+          "capacidad_maxima": 150,
+          "horario_fijo": "2027-02-01T18:05:43",
+          "votos_recibidos": 26
+        },
+        {
+          "id_actividad": 11,
+          "titulo_propuesta": "Club de Ajedrez - Digitized methodical customer loyalty",
+          "nombre_espacio": "Salón estaba 6",
+          "capacidad_maxima": 26,
+          "horario_fijo": "2026-12-30T02:21:06",
+          "votos_recibidos": 26
+        },
+        {
+          "id_actividad": 1,
+          "titulo_propuesta": "Concierto de Ajedrez - Synergistic zero-defect model",
+          "nombre_espacio": "Salón fuerte 8",
+          "capacidad_maxima": 31,
+          "horario_fijo": "2026-11-11T17:43:36",
+          "votos_recibidos": 25
+        },
+        {
+          "id_actividad": 3,
+          "titulo_propuesta": "Charla de Cine - Switchable reciprocal collaboration",
+          "nombre_espacio": "Sala enero 3",
+          "capacidad_maxima": 109,
+          "horario_fijo": "2026-11-29T21:09:14",
+          "votos_recibidos": 24
+        }
+      ]
+    },
+    {
+      "nombre": "interes_de_alumnos_frente_a_tendencias_en_redes",
+      "por_que_es_importante": "Cruza Categorias_Interes, Preferencias_Alumnos y Tendencias_Redes. Compara lo que piden los alumnos con lo que está de moda fuera del instituto y detecta temas con mucha demanda en redes y poca oferta interna.",
+      "sql": "SELECT c.nombre_categoria, (SELECT ROUND(AVG(pa.nivel_interes), 2) FROM Preferencias_Alumnos pa WHERE pa.id_categoria = c.id_categoria) AS interes_medio_alumnos, (SELECT COALESCE(SUM(t.volumen_busquedas), 0) FROM Tendencias_Redes t WHERE t.id_categoria = c.id_categoria) AS busquedas_en_redes FROM Categorias_Interes c ORDER BY busquedas_en_redes DESC",
+      "total_filas": 12,
+      "resultados": [
+        {
+          "nombre_categoria": "Teatro",
+          "interes_medio_alumnos": 3.09,
+          "busquedas_en_redes": 445809.0
+        },
+        {
+          "nombre_categoria": "Cocina",
+          "interes_medio_alumnos": 3.09,
+          "busquedas_en_redes": 434439.0
+        },
+        {
+          "nombre_categoria": "Tecnología",
+          "interes_medio_alumnos": 3.07,
+          "busquedas_en_redes": 383444.0
+        },
+        {
+          "nombre_categoria": "Fotografía",
+          "interes_medio_alumnos": 2.97,
+          "busquedas_en_redes": 348026.0
+        },
+        {
+          "nombre_categoria": "Deportes",
+          "interes_medio_alumnos": 3.29,
+          "busquedas_en_redes": 333036.0
+        },
+        {
+          "nombre_categoria": "Videojuegos",
+          "interes_medio_alumnos": 3.03,
+          "busquedas_en_redes": 304085.0
+        },
+        {
+          "nombre_categoria": "Ajedrez",
+          "interes_medio_alumnos": 3.13,
+          "busquedas_en_redes": 291572.0
+        },
+        {
+          "nombre_categoria": "Cine",
+          "interes_medio_alumnos": 3.18,
+          "busquedas_en_redes": 289678.0
+        },
+        {
+          "nombre_categoria": "Idiomas",
+          "interes_medio_alumnos": 3.14,
+          "busquedas_en_redes": 219627.0
+        },
+        {
+          "nombre_categoria": "Arte y dibujo",
+          "interes_medio_alumnos": 2.99,
+          "busquedas_en_redes": 208654.0
+        },
+        {
+          "nombre_categoria": "Música",
+          "interes_medio_alumnos": 2.87,
+          "busquedas_en_redes": 121828.0
+        },
+        {
+          "nombre_categoria": "Podcasts",
+          "interes_medio_alumnos": 3.08,
+          "busquedas_en_redes": 100703.0
+        }
+      ]
+    }
+  ]
+}

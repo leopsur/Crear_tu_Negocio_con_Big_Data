@@ -1,0 +1,32 @@
+services:
+  mysql:
+    build: ./mysql
+    container_name: activityleo_mysql
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  postgres:
+    build: ./postgres
+    container_name: activityleo_postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mariadb:
+    build: ./mariadb
+    container_name: activityleo_mariadb
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+  postgres_data:
+  mariadb_data:
